@@ -22,7 +22,7 @@ SECRET_KEY = '!frt!zg#89*ql*t1uhtrha^*lmkh-&#nsi*w3w0e5#kf8gi%%2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # naam.public.cy.devfactory.com
-ALLOWED_HOSTS = ['0.0.0.0', 'djangoapp.public.cy.devfactory.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
