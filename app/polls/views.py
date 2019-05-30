@@ -191,3 +191,17 @@ def get_all_projects(record):
     ####################
     final_dict = json.dumps({"info": projects})
     return HttpResponse(final_dict, content_type="text/json")
+
+@csrf_exempt
+@invalid_data
+@require_http_methods("POST")
+def compare(record):
+    instance = json.loads(record.body.decode('utf-8'))
+    project_id = instance['id']
+    logged_string = list(ProjectLog.objects.filter(project_id=project_id).values_list('project_user_list', flat = True))[0]
+    if(logged_string == record.body.decode('utf-8')):
+        return HttpResponse('same', status=201)
+    else:
+        ProjectLog.objects.filter(project_id=project_id)
+        ProjectLog.objects.filter(project_id=project_id).update(project_user_list=record.body.decode('utf-8'))
+        return HttpResponse('different', status=201)

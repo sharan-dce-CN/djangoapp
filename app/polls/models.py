@@ -18,3 +18,6 @@ class Project_User(models.Model):
     User_id = models.ForeignKey(User, on_delete = models.CASCADE)
     IsMentor = models.BooleanField(default = False)
 
+class ProjectLog(models.Model):
+    project_id = models.IntegerField(primary_key = True)
+    project_user_list = models.TextField()
